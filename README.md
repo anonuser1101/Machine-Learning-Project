@@ -32,15 +32,25 @@ Deep Learning	MLP (Neural Net)	71.0%	The Breakdown. Successfully learned non-lin
 The "Static Wall": Traditional models plateaued at ~66%. The MLP breaking 70% suggests that Deep Learning can identify positional nuances that rule-based models miss, though the remaining error rate is largely attributed to unpredictable human blunders (tactics) inherent in amateur play.
 
 data/raw/games.csv            # Original Lichess Dataset
+
 data/processed/master_data.csv # Generated dataset (1.2M rows)
+
 models/                      # Saved .pkl (Sklearn) and .keras (TensorFlow) models
+
 plots/                       # Generated confusion matrices & feature importance charts
+
 src/
+
    01_preprocessing.py             # Parses PGNs, simulates games, extracts features
+   
    02_train_rf_enhanced.py         # Random Forest training
+   
    03_train_logreg_enhanced.py     # Logistic Regression training
+   
    04_train_knn_enhanced.py        # KNN training (with PCA)
+   
    05_train_dl_enhanced.py         # Deep Learning (MLP) training
+   
    07_make_video_mp4.py            # Generates the "Detect-o-meter" video
 
 
