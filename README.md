@@ -1,4 +1,6 @@
-This is the machine learning project for my mendelu class. The Dataset wasn't included because the files were too large. 
+This is the machine learning project for my mendelu class. 
+
+NOTE: The Dataset and models weren't included because the files were too large, everything can be downloaded fully on this google drive link: https://drive.google.com/drive/folders/1iKW6zTKPgqC5hh0E_fJE-Mv-MQE61__H?usp=sharing
 
 Dataset: https://www.kaggle.com/datasets/datasnaek/chess
 
