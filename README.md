@@ -25,11 +25,10 @@ Visualization: Create a real-time "Win Probability" video overlay for PGN game r
 
 We analyzed over 1.2 million board states derived from 20,000 amateur Lichess games.
 
-Model	Architecture	Accuracy	Key Insight
-Logistic Regression	Linear	66.1%	Highly stable. Proved Material + Mobility = Win is the dominant linear factor.
-Random Forest	Ensemble Tree	66.7%	The best "Traditional" model. Hit a ceiling due to inability to model complex sacrifices.
-KNN	Geometric	63.1%	Required PCA (Dimensionality Reduction) to function. Struggled with high-dimensional board data.
-Deep Learning	MLP (Neural Net)	71.0%	The Breakdown. Successfully learned non-linear Feature Synthesis (e.g., Compensation for sacrificed material).
+**Logistic Regression:**	66.1%	Highly stable. Proved Material + Mobility = Win is the dominant linear factor.
+**Random Forest:**	66.7%	The best "Traditional" model. Hit a ceiling due to inability to model complex sacrifices.
+**KNN:**	63.1%	Required PCA (Dimensionality Reduction) to function. Struggled with high-dimensional board data.
+**Deep Learning	MLP (Neural Net):**	71.0%	The Breakdown. Successfully learned non-linear Feature Synthesis (e.g., Compensation for sacrificed material). (this model was only added for evaluation purposes)
 
 The "Static Wall": Traditional models plateaued at ~66%. The MLP breaking 70% suggests that Deep Learning can identify positional nuances that rule-based models miss, though the remaining error rate is largely attributed to unpredictable human blunders (tactics) inherent in amateur play.
 
@@ -60,7 +59,7 @@ src/
 
 Run the scripts in the following order to replicate the results.
 
-1. Data Processing
+**1. Data Processing**
 
 Extracts features from raw PGN strings.
 
@@ -70,7 +69,7 @@ Key Engineering: Calculates Material Difference and Mobility Difference (using a
 
 python src/01_preprocessing.py
 
-2. Model Training
+**2. Model Training**
 
 Train the individual models. Each script saves the model to /models and generates analysis charts in /plots.
 
@@ -85,13 +84,14 @@ python src/04_train_knn_enhanced.py
 
 Deep Learning Model (The best performer)
 python src/06_train_deep_learning_enhanced.py
-3. Generate Visualization
+
+**3. Generate Visualization**
 
 Runs the "Detect-o-meter" on a sample game (Deep Blue vs. Kasparov, 1997) to visualize how the models "think" over time.
 python src/07_make_video_mp4.py
 
 #  🧠 Methodology Highlights
-Feature Engineering
+**Feature Engineering**
 
 Instead of feeding raw board pixels, we extracted 75 distinct features per board state:
 
@@ -101,7 +101,7 @@ Material Imbalance: Heuristic sum (Q=9, R=5, etc.).
 
 Mobility Imbalance: The differential in legal moves available to White vs. Black. This was identified as the 2nd most important feature in Random Forest analysis.
 
-Data Splitting
+**Data Splitting**
 
 We used Grouped Splitting by Game ID.
 
@@ -111,7 +111,7 @@ Solution: We ensured that if Game X is in the training set, all moves from Game 
 
 📈 Results Visualization
 
-The project generates several key plots in the plots/ directory:
+**The project generates several key plots in the plots/ directory:**
 
 rf_feature_importance.png: Visual proof of Mobility's impact.
 
