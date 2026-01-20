@@ -31,12 +31,6 @@ Deep Learning	MLP (Neural Net)	71.0%	The Breakdown. Successfully learned non-lin
 
 The "Static Wall": Traditional models plateaued at ~66%. The MLP breaking 70% suggests that Deep Learning can identify positional nuances that rule-based models miss, though the remaining error rate is largely attributed to unpredictable human blunders (tactics) inherent in amateur play.
 
-📂 Project Structure
-code
-Text
-download
-content_copy
-expand_less
 chess-win-predictor/
 │
 ├── data/
