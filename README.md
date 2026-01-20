@@ -11,7 +11,7 @@ Chess Win Predictor (The "Detect-o-meter")
 
 A Machine Learning pipeline that predicts the winner of a chess game (White/Black/Draw) based on a single static board snapshot. Unlike traditional engines (Stockfish) that use Minimax search to calculate future moves, this project uses pattern recognition to evaluate the current position immediately.
 
-🎯 Project Goals
+# 🎯 Project Goals
 
 Static Evaluation: Predict game outcomes without looking ahead (Search Depth = 0).
 
@@ -19,7 +19,7 @@ Comparative Analysis: Benchmark traditional ML (LogReg, RF, KNN) against Deep Le
 
 Visualization: Create a real-time "Win Probability" video overlay for PGN game replays.
 
-📊 Key Findings
+# 📊 Key Findings
 
 We analyzed over 1.2 million board states derived from 20,000 amateur Lichess games.
 
@@ -54,7 +54,7 @@ src/
    07_make_video_mp4.py            # Generates the "Detect-o-meter" video
 
 
-🚀 Usage Pipeline
+# 🚀 Usage Pipeline
 
 Run the scripts in the following order to replicate the results.
 
@@ -66,34 +66,29 @@ Input: data/raw/games.csv
 
 Key Engineering: Calculates Material Difference and Mobility Difference (using a null-move lookahead to count opponent legal moves).
 
-code
-Bash
-download
-content_copy
-expand_less
 python src/01_preprocessing.py
 
 2. Model Training
 
 Train the individual models. Each script saves the model to /models and generates analysis charts in /plots.
 
-# Baseline Linear Model
+Baseline Linear Model
 python src/03_train_logreg_enhanced.py
 
-# Ensemble Tree Model
+Ensemble Tree Model
 python src/02_train_rf_enhanced.py
 
-# Geometric Model (Includes PCA Step)
+Geometric Model (Includes PCA Step)
 python src/04_train_knn_enhanced.py
 
-# Deep Learning Model (The best performer)
+Deep Learning Model (The best performer)
 python src/06_train_deep_learning_enhanced.py
 3. Generate Visualization
 
 Runs the "Detect-o-meter" on a sample game (Deep Blue vs. Kasparov, 1997) to visualize how the models "think" over time.
 python src/07_make_video_mp4.py
 
-🧠 Methodology Highlights
+#  🧠 Methodology Highlights
 Feature Engineering
 
 Instead of feeding raw board pixels, we extracted 75 distinct features per board state:
