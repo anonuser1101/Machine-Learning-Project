@@ -31,38 +31,18 @@ Deep Learning	MLP (Neural Net)	71.0%	The Breakdown. Successfully learned non-lin
 
 The "Static Wall": Traditional models plateaued at ~66%. The MLP breaking 70% suggests that Deep Learning can identify positional nuances that rule-based models miss, though the remaining error rate is largely attributed to unpredictable human blunders (tactics) inherent in amateur play.
 
-chess-win-predictor/
-│
-├── data/
-│   ├── raw/games.csv            # Original Lichess Dataset
-│   └── processed/master_data.csv # Generated dataset (1.2M rows)
-│
-├── models/                      # Saved .pkl (Sklearn) and .keras (TensorFlow) models
-├── plots/                       # Generated confusion matrices & feature importance charts
-│
-├── src/
-│   ├── 01_preprocessing.py             # Parses PGNs, simulates games, extracts features
-│   ├── 02_train_rf_enhanced.py         # Random Forest training
-│   ├── 03_train_logreg_enhanced.py     # Logistic Regression training
-│   ├── 04_train_knn_enhanced.py        # KNN training (with PCA)
-│   ├── 05_train_dl_enhanced.py         # Deep Learning (MLP) training
-│   └── 07_make_video_mp4.py            # Generates the "Detect-o-meter" video
-│
-└── README.md
-🛠️ Installation
+data/raw/games.csv            # Original Lichess Dataset
+data/processed/master_data.csv # Generated dataset (1.2M rows)
+models/                      # Saved .pkl (Sklearn) and .keras (TensorFlow) models
+plots/                       # Generated confusion matrices & feature importance charts
+src/
+   01_preprocessing.py             # Parses PGNs, simulates games, extracts features
+   02_train_rf_enhanced.py         # Random Forest training
+   03_train_logreg_enhanced.py     # Logistic Regression training
+   04_train_knn_enhanced.py        # KNN training (with PCA)
+   05_train_dl_enhanced.py         # Deep Learning (MLP) training
+   07_make_video_mp4.py            # Generates the "Detect-o-meter" video
 
-Clone the repository.
-
-Install dependencies:
-
-code
-Bash
-download
-content_copy
-expand_less
-pip install pandas numpy scikit-learn tensorflow matplotlib seaborn python-chess joblib tqdm
-
-Optional: Install FFmpeg if you want .mp4 video output (script defaults to .gif if FFmpeg is missing).
 
 🚀 Usage Pipeline
 
@@ -83,17 +63,10 @@ content_copy
 expand_less
 python src/01_preprocessing.py
 
-Warning: This step takes 10-15 minutes due to the mobility calculations.
-
 2. Model Training
 
 Train the individual models. Each script saves the model to /models and generates analysis charts in /plots.
 
-code
-Bash
-download
-content_copy
-expand_less
 # Baseline Linear Model
 python src/03_train_logreg_enhanced.py
 
@@ -108,15 +81,7 @@ python src/06_train_deep_learning_enhanced.py
 3. Generate Visualization
 
 Runs the "Detect-o-meter" on a sample game (Deep Blue vs. Kasparov, 1997) to visualize how the models "think" over time.
-
-code
-Bash
-download
-content_copy
-expand_less
 python src/07_make_video_mp4.py
-
-Output: chess_evolution.mp4 (or .gif).
 
 🧠 Methodology Highlights
 Feature Engineering
@@ -147,6 +112,3 @@ logreg_coefficients.png: Directional impact of features (Positive = White Advant
 
 dl_training_history.png: Learning curves showing the MLP's convergence.
 
-📝 License
-
-This project uses open data from Lichess.org. Code is open source.
